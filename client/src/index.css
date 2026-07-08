@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+
+@layer base {
+
+    body {
+        background-color: hsl(0, 0%, 100%);
+        -webkit-font-smoothing: antialiased;
+        font-optical-sizing: auto;
+        scroll-behavior: smooth;
+        min-height: 100vh;
+        color: hsl(0, 0%, 0%);
+    }
+}
