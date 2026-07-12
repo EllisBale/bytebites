@@ -17,11 +17,18 @@ app.use(cors({
 app.use(express.json());
 
 
-app.get("/api/menu", isAdmin, async (req, res) => {
-    res.json({
-        success: true,
-        message: "You added a new burger!"
-    });
+app.get("/api/menu", async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM menu_items");
+        res.json(result.rows);
+
+    } catch (err) {
+        console.error("Error fetching menu from DB:", err);
+        res.status(500).json({
+            success: false,
+            error: "Failed to fetch menu items."
+        })
+    }
 });
 
 
