@@ -19,7 +19,10 @@ const Search = () => {
     const fetchMenu  =  async () => {
 
         try {
-            const res = await fetch("http://localhost:8080/api/menu");
+
+            const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
+            const res = await fetch(`${API_URL}/api/menu`);
             const data = await res.json();
             setMenuItems(data);
         } catch (err) {
