@@ -22,7 +22,7 @@ const PostcodeChecker = () => {
     };
 
     return(
-        <div>
+        <div className="w-100 text-center">
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
