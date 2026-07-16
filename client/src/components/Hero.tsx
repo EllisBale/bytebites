@@ -10,8 +10,8 @@ const Hero = () => {
                    "--hero-bg": `url(${heroBg})`,
                 } as React.CSSProperties}>
                 <div className="flex flex-col items-start max-[1100px]:items-center justify-center h-full w-full text-center lg:pl-10">
-                    <h1 className="text-6xl font-bold mb-10 w-full lg:w-100 text-center"> ByteBites</h1>
-                    <p className="text-lg font-bold mb-10 w-full lg:w-100 text-center"> Order Fresh Food Fast</p>
+                    <h1 className="text-6xl font-bold mb-10 w-full lg:w-100 min-[1100px]:text-start"> ByteBites</h1>
+                    <p className="text-lg font-bold mb-10 w-full lg:w-100 min-[1100px]:text-start"> Order Fresh Food Fast</p>
                     <PostcodeChecker />
                 </div>
             </div>

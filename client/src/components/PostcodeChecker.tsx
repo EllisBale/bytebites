@@ -34,6 +34,7 @@ const PostcodeChecker = () => {
                         placeholder="Enter your postcode"
                         value={postcode}
                         onChange={(e) => setPostcode(e.target.value)}
+                        maxLength={8}
                         className="p-3 text-black"
                     />
                     <button 
