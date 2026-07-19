@@ -1,7 +1,13 @@
 import { useState } from "react";
 import Search from "./Search";
+import { type MenuItem } from "../pages/Menu";
 
-const Navbar = () => {
+
+interface NavbarProps {
+    menuItems: MenuItem[];
+}
+
+const Navbar = ({ menuItems }: NavbarProps  ) => {
 
 
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
@@ -48,7 +54,7 @@ const Navbar = () => {
                                         <circle cx="12" cy="10" r="3" />
                                     </svg>
                                 </a>
-                                <Search />
+                                <Search menuItems={menuItems}/>
                             </div>
                         </div>
                     </div>

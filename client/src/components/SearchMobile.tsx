@@ -1,27 +1,25 @@
 import { useState } from "react";
 import { type MenuItem } from "../pages/Menu";
 
-interface SearchProps {
+
+interface SearchMobileProps {
     menuItems: MenuItem[];
 }
 
 
+const SearchMobile = ({ menuItems }: SearchMobileProps) => {
 
-
-const Search = ({ menuItems }: SearchProps) => {
-
-  const [query, setQuery] = useState<string>("");
-
-  const filterItems = query.trim() === ""
-    ? []
-    : menuItems.filter((item) =>
-        item?.name?.toLowerCase().includes(query.toLowerCase())
-    );
+      const [query, setQuery] = useState<string>("");
+    
+      const filterItems = query.trim() === ""
+        ? []
+        : menuItems.filter((item) =>
+            item?.name?.toLowerCase().includes(query.toLowerCase())
+        );
 
     return (
-
-        <div className="w-full">
-            <div className="w-full bg-white rounded-xl">
+            <div className="w-full bg-gray-950 py-5 px-2  max-h-[calc(100vh-0rem)]">
+            <div className="w-full bg-white rounded-xl mb-2">
                 <input 
                     type="text" 
                     maxLength={70}
@@ -36,7 +34,7 @@ const Search = ({ menuItems }: SearchProps) => {
             </div>
         
                {query.trim() !== "" && (
-                <div className="fixed top-16 left-0 w-full max-h-[calc(100vh-4rem)] bg-gray-950 overflow-y-auto px-4 py-4 z-[999]">
+                <div className="relative left-0 wl max-h-[calc(100vh-4rem)] bg-gray-950 overflow-y-auto px-4 py-4 z-[999]">
                     <div className="flex justify-end">
                         <button onClick={() => setQuery("")} className="flex text-white w-auto justify-end cursor-pointer">
                             Close
@@ -74,5 +72,4 @@ const Search = ({ menuItems }: SearchProps) => {
         </div>
     )
 };
-
-export default Search;
+export default SearchMobile;
