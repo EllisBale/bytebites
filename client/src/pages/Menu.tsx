@@ -1,8 +1,16 @@
+import Navbar from "../components/Navbar";
+
+
 const Menu = () => {
 
     return(
         <div>
-            <h1>Menu page</h1>
+            <div className="relative z-50">
+                <Navbar />
+            </div>
+            <div className="relative z-10">
+                Menu page
+            </div>
         </div>
     )
 };
