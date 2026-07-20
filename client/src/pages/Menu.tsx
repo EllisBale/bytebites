@@ -1,6 +1,9 @@
 import Navbar from "../components/Navbar";
 import SearchMobile from "../components/SearchMobile";
+import BiteBannerMobile from "../assets/bitebannermobile.png";
+import BiteBanner from "../assets/bitebanner.png";
 import { useState, useEffect } from "react";
+
 
     export type MenuItem = {
         id?: number,
@@ -39,6 +42,7 @@ const Menu = () => {
 
 
     return(
+
         <div>
             <div className="relative z-50">
                 <Navbar  menuItems={menuItems}/>
@@ -46,6 +50,24 @@ const Menu = () => {
             <div className="sm:hidden bg">
                 <SearchMobile  menuItems={menuItems}/>
             </div>
+
+            <main>
+                <div className="container mx-auto px-0 max-w-7xl">
+                    <div className="flex">
+                        <img 
+                            src={BiteBannerMobile}
+                            alt="Promotional banner"
+                            className="block lg:hidden object-cover w-full select-none pointer-events-none"
+                        />
+                        <img 
+                            src={BiteBanner}
+                            alt="Promotional banner"
+                            className="hidden lg:block cover w-full select-none pointer-events-none"
+                        />
+                    </div>
+                </div>
+            </main>
+
         </div>
     )
 };
