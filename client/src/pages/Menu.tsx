@@ -6,12 +6,13 @@ import { useState, useEffect } from "react";
 
 
     export type MenuItem = {
-        id?: number,
-        name?: string,
+        id: number,
+        name: string,
         description?: string,
-        price?: number,
+        price: number,
         category?: string,
         image_url?: string,
+        popular?: boolean,
     };
 
 
@@ -52,19 +53,38 @@ const Menu = () => {
             </div>
 
             <main>
-                <div className="container mx-auto px-0 max-w-7xl">
+                <div className="container mx-auto px-0 max-w-8xl">
                     <div className="flex">
                         <img 
                             src={BiteBannerMobile}
                             alt="Promotional banner"
-                            className="block lg:hidden object-cover w-full select-none pointer-events-none"
+                            className="block lg:hidden object-cover w-full select-none pointer-events-none mand"
                         />
                         <img 
                             src={BiteBanner}
                             alt="Promotional banner"
-                            className="hidden lg:block cover w-full select-none pointer-events-none"
+                            className="hidden lg:block cover w-full select-none pointer-events-none mand"
                         />
                     </div>
+                    <h1 className="my-10 font-semibold text-2xl px-5">
+                        Popular Items
+                    </h1>
+
+                    {menuItems
+                        .filter((item) => item.popular === true)
+                        .map((item) => (
+                            <div key={item.id} className="px-5">
+                                <img 
+                                    src={item.image_url} 
+                                    alt={item.name} 
+                                
+                                />
+                                {item.name}
+                            </div>
+                        ))
+                    }
+                    
+
                 </div>
             </main>
 

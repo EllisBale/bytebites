@@ -1,12 +1,16 @@
-const express = require("express");
-const cors = require("cors");
-const pool = require("./db");
-require("dotenv").config();
+import express, { type Express, type Request, type Response } from 'express';
+import cors from "cors";
+import pool from "./db";
+// import { isAdmin } from "./middleware/auth"
+import dotenv from "dotenv";
+import { uploadRouter } from "./uploadthing"
+import { createRouteHandler } from 'uploadthing/express';
 
 
-const app = express();
+dotenv.config();
+
+const app: Express = express();
 const PORT = process.env.PORT || 8080;
-const { isAdmin } = require("./middleware/auth");
 
 
 // Middleware
@@ -17,9 +21,20 @@ app.use(cors({
 app.use(express.json());
 
 
-app.get("/api/menu", async (req, res) => {
+
+ // UploadThing
+ app.use(
+    "/api/uploadthing",
+    createRouteHandler({
+        router: uploadRouter
+    })
+ );
+
+
+// Menu
+app.get("/api/menu", async (req: Request, res: Response) => {
     try {
-        const result = await pool.query("SELECT * FROM menu_items");
+        const result = await pool.query("SELECT * FROM menu_items ORDER BY id ASC");
         res.json(result.rows);
 
     } catch (err) {
@@ -32,7 +47,8 @@ app.get("/api/menu", async (req, res) => {
 });
 
 
-app.get("/api/test-db", async (req, res) => {
+// DB test
+app.get("/api/test-db", async  (req: Request, res: Response) => {
     try {
         const result = await pool.query("SELECT NOW()");
 
@@ -54,4 +70,4 @@ app.get("/api/test-db", async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-})
+});

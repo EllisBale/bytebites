@@ -36,6 +36,7 @@ const PostcodeChecker = () => {
                         onChange={(e) => setPostcode(e.target.value)}
                         maxLength={8}
                         className="p-3 text-black"
+                        required
                     />
                     <button 
                         type="submit"
