@@ -1,9 +1,9 @@
 import express, { type Express, type Request, type Response } from 'express';
 import cors from "cors";
-import pool from "./db";
+import pool from "./db.js";
 // import { isAdmin } from "./middleware/auth"
 import dotenv from "dotenv";
-import { uploadRouter } from "./uploadthing"
+import { uploadRouter } from "./uploadthing.js"
 import { createRouteHandler } from 'uploadthing/express';
 
 
