@@ -5,6 +5,7 @@ import pool from "./db.js";
 import dotenv from "dotenv";
 import { uploadRouter } from "./uploadthing.js"
 import { createRouteHandler } from 'uploadthing/express';
+import { error } from 'console';
 
 
 dotenv.config();
@@ -29,6 +30,37 @@ app.use(express.json());
         router: uploadRouter
     })
  );
+
+
+ app.post("/api/menu", async  (req: Request, res: Response) => {
+    const { name, price, image_url } = req.body;
+
+    if (!name || !price || !image_url) {
+        return res.status(400).json({
+            success: false,
+            error: "Name, price, and image_url are required.",
+        });
+    }
+
+    try {
+        const result = await pool.query(
+            "INSERT INTO menu_items (name, price, image_url) VALUES (£1, £2, £3) RETURNING *",
+            [name, price, image_url]
+        );
+
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],
+        });
+    } catch (err) {
+        console.error("Error inserting menu item:", err);
+        res.status(500).json({
+            success: false,
+            error: "Failed to create menu item.",
+        });
+    }
+
+ });
 
 
 // Menu

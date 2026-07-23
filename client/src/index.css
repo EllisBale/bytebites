@@ -15,17 +15,8 @@
     }
 
 
-    h1, h2, p {
-        font-family: "Playfair Display", serif;
+    h1, h2, p  {
+        font-family: "Playfair isplay", serif;
     }
-
-
-    .mand  {
-        border-bottom-right-radius: 5% ;
-        border-bottom-left-radius: 5% ;
-        corner-bottom-right-shape: round;
-        corner-bottom-left-shape: round;
-    }
-
 
 }
